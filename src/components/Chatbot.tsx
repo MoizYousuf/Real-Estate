@@ -115,7 +115,7 @@ export default function Chatbot({ isOpen, onClose, onSearch, onSelectProperty }:
           customCard = {
             type: 'booking',
             data: {
-              propertyName: finalData.property.title,
+              propertyName: finalData.property?.title || '',
               date: finalData.date,
               medium: medium === 'virtual' ? '3D Virtual Guided' : medium === 'video' ? 'Private Video Walk' : 'In-Person Site Visit',
               status: 'Holographic Pass Activated'
@@ -149,12 +149,12 @@ export default function Chatbot({ isOpen, onClose, onSearch, onSelectProperty }:
         } else if (workflowStep === 2) {
           // Expecting confirmation
           if (query.includes('yes') || query.includes('yup') || query.includes('sure')) {
-            const formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(workflowData.offerPrice);
+            const formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(workflowData.offerPrice || 0);
             botResponseText = "Congratulations! Your offer has been officially registered and dispatched to the property owner's representative. Here is your receipt:";
             customCard = {
               type: 'offer',
               data: {
-                propertyName: workflowData.property.title,
+                propertyName: workflowData.property?.title || '',
                 price: formattedPrice,
                 status: 'Dispatched to Seller'
               }
