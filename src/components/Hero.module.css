@@ -1,0 +1,485 @@
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px; /* offset navbar */
+  padding-bottom: 60px;
+  overflow: hidden;
+}
+
+.bgGlow {
+  position: absolute;
+  top: 10%;
+  right: -5%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 600px;
+  max-height: 600px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(229, 193, 88, 0.05) 50%, transparent 100%);
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+:global(.light-theme) .gridOverlay {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+}
+
+.container {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+@media (min-width: 992px) {
+  .container {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(229, 193, 88, 0.1);
+  border: 1px solid var(--border-glow);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.badgePulse {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-teal);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px var(--accent-teal);
+  animation: pulseGlow 2s infinite;
+}
+
+.title {
+  font-size: clamp(38px, 6vw, 64px);
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.goldGradient {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:global(.light-theme) .goldGradient {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 540px;
+  margin-bottom: 36px;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 6px 6px 6px 16px;
+  border-radius: 40px;
+  gap: 12px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.searchIcon {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: var(--text-main);
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+.searchBtn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.chipsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.chip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chip:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  transform: translateY(-1px);
+}
+
+.statsContainer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.statBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.statNum {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-main);
+  background: linear-gradient(135deg, var(--text-main), var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.statDivider {
+  width: 1px;
+  height: 40px;
+  background: var(--border-glass);
+}
+
+/* 3D Model Area */
+.modelContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 480px;
+  margin: 0 auto;
+  perspective: 1200px;
+  cursor: grab;
+  z-index: 6;
+}
+
+.scene3D {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ground floor plate */
+.floor3D {
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(var(--accent-teal-rgb), 0.12) 0%, rgba(20, 20, 35, 0.9) 60%, rgba(255,255,255,0.01) 100%);
+  border: 2px dashed rgba(255,255,255,0.08);
+  border-radius: 50%;
+  transform: rotateX(90deg) translateZ(-100px);
+  transform-style: preserve-3d;
+  box-shadow: 0 0 50px rgba(0, 242, 254, 0.05);
+}
+
+:global(.light-theme) .floor3D {
+  background: radial-gradient(circle, rgba(0, 128, 128, 0.1) 0%, rgba(255,255,255,0.9) 60%, rgba(0,0,0,0.01) 100%);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+/* 3D Glass Mansion structure */
+.glassHouse {
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  height: 40%;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+}
+
+.wall {
+  position: absolute;
+  background: rgba(0, 242, 254, 0.06);
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.15);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:global(.light-theme) .wall {
+  background: rgba(0, 128, 128, 0.04);
+  border-color: rgba(0, 128, 128, 0.25);
+  box-shadow: inset 0 0 10px rgba(0, 128, 128, 0.1);
+}
+
+/* Wall Dimensions for Level 1 */
+.wallFront {
+  width: 100%;
+  height: 80px;
+  transform: translateZ(60px);
+}
+
+.wallBack {
+  width: 100%;
+  height: 80px;
+  transform: translateZ(-60px) rotateY(180deg);
+}
+
+.wallLeft {
+  width: 120px;
+  height: 80px;
+  left: -10px;
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.wallRight {
+  width: 120px;
+  height: 80px;
+  right: -10px;
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.roofIntermediary {
+  position: absolute;
+  top: 80px;
+  width: 110%;
+  height: 130px;
+  left: -5%;
+  background: rgba(229, 193, 88, 0.15);
+  border: 1.5px solid var(--accent-gold);
+  transform: rotateX(90deg) translateZ(-40px);
+  box-shadow: 0 0 15px rgba(229, 193, 88, 0.2);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Floor 2 */
+.floor2 {
+  position: absolute;
+  top: -65px;
+  left: 10%;
+  width: 90%;
+  height: 65px;
+  transform-style: preserve-3d;
+  transform: translateZ(20px);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floor2 .wall {
+  height: 65px;
+  background: rgba(229, 193, 88, 0.05);
+  border-color: rgba(229, 193, 88, 0.4);
+  box-shadow: inset 0 0 10px rgba(229, 193, 88, 0.1);
+}
+
+.floor2 .wallFront { transform: translateZ(50px); }
+.floor2 .wallBack { transform: translateZ(-50px) rotateY(180deg); }
+.floor2 .wallLeft { width: 100px; left: -5px; transform: rotateY(-90deg) translateZ(45px); }
+.floor2 .wallRight { width: 100px; right: -5px; transform: rotateY(90deg) translateZ(45px); }
+
+/* Roof Level 2 */
+.roof3D {
+  position: absolute;
+  top: -65px;
+  width: 115%;
+  height: 120px;
+  left: -2%;
+  background: rgba(13, 13, 22, 0.9);
+  border: 2px solid var(--accent-gold);
+  transform: rotateX(90deg) translateZ(80px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:global(.light-theme) .roof3D {
+  background: #ffffff;
+  border-color: var(--accent-gold);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Swimming Pool */
+.pool3D {
+  position: absolute;
+  top: 110px;
+  width: 60px;
+  height: 110px;
+  left: -50px;
+  background: rgba(0, 242, 254, 0.4);
+  border: 2px solid #00f2fe;
+  border-radius: 4px;
+  transform: rotateX(90deg) translateZ(-55px);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+  animation: pulseGlow 3s infinite;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+}
+
+/* Exploded hover layout */
+.modelContainer:hover .roof3D {
+  transform: rotateX(90deg) translateZ(130px);
+}
+
+.modelContainer:hover .floor2 {
+  transform: translateZ(55px);
+}
+
+.modelContainer:hover .roofIntermediary {
+  transform: rotateX(90deg) translateZ(-15px);
+}
+
+.modelContainer:hover .wallFront {
+  transform: translateZ(80px);
+}
+
+.modelContainer:hover .wallBack {
+  transform: translateZ(-80px) rotateY(180deg);
+}
+
+.modelContainer:hover .floor2 .wallFront {
+  transform: translateZ(70px);
+}
+
+.modelContainer:hover .floor2 .wallBack {
+  transform: translateZ(-70px) rotateY(180deg);
+}
+
+.modelContainer:hover .pool3D {
+  transform: rotateX(90deg) translateZ(-70px) translateX(-25px);
+  box-shadow: 0 0 35px rgba(0, 242, 254, 0.9);
+}
+
+
+/* Floating label nodes */
+.floatingNode {
+  position: absolute;
+  padding: 4px 10px;
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: var(--shadow-gold);
+  animation: float 4s ease-in-out infinite;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.node1 {
+  top: 10%;
+  left: 0%;
+  animation-delay: 0s;
+  transform: translateZ(80px);
+}
+
+.node2 {
+  top: -5%;
+  right: 5%;
+  animation-delay: 1.5s;
+  transform: translateZ(100px);
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  box-shadow: var(--shadow-glow);
+}
+
+.node3 {
+  bottom: 10%;
+  right: -5%;
+  animation-delay: 2.5s;
+  transform: translateZ(50px);
+}
+
+/* Responsiveness */
+@media (max-width: 991px) {
+  .heroSection {
+    padding-top: 80px;
+  }
+  
+  .infoContent {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .chipsRow {
+    justify-content: center;
+  }
+  
+  .statsContainer {
+    justify-content: center;
+  }
+
+  .modelContainer {
+    margin-top: 20px;
+    max-width: 320px;
+  }
+}
