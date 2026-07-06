@@ -37,6 +37,13 @@ const PREDEFINED_CHIPS = [
   { label: '🌴 Miami Homes', query: 'Miami' },
 ];
 
+interface WorkflowData {
+  property?: Property;
+  date?: string;
+  medium?: string;
+  offerPrice?: number;
+}
+
 export default function Chatbot({ isOpen, onClose, onSearch, onSelectProperty }: ChatbotProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -53,7 +60,7 @@ export default function Chatbot({ isOpen, onClose, onSearch, onSelectProperty }:
   // Workflow states
   const [activeWorkflow, setActiveWorkflow] = useState<'none' | 'booking' | 'offer'>('none');
   const [workflowStep, setWorkflowStep] = useState(0);
-  const [workflowData, setWorkflowData] = useState<any>({});
+  const [workflowData, setWorkflowData] = useState<WorkflowData>({});
 
   // Auto-scroll messages
   useEffect(() => {
