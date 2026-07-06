@@ -1,0 +1,373 @@
+.mainWrapper {
+  background: var(--bg-main);
+  padding: 120px 0 80px 0;
+  min-height: 100vh;
+}
+
+.container {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pageHeader {
+  margin-bottom: 48px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(229, 193, 88, 0.1);
+  border: 1px solid var(--border-glow);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.pageTitle {
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.pageSubtitle {
+  color: var(--text-muted);
+  font-size: 15px;
+  max-width: 600px;
+}
+
+/* Content Layout split */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .contentGrid {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+/* Filter Panel Styling */
+.filterPanel {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.filterSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 14px;
+}
+
+.filterSectionHeader h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.resetBtn {
+  background: transparent;
+  border: none;
+  color: var(--accent-gold);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.resetBtn:hover {
+  text-shadow: 0 0 5px rgba(229, 193, 88, 0.4);
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.filterInput {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--text-main);
+  font-size: 13px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.filterInput:focus {
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 10px rgba(20, 184, 166, 0.2);
+}
+
+/* Horizontal select/chip groups */
+.locationGrid, .checkboxGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filterBtn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+  border-color: var(--text-main);
+  color: var(--text-main);
+}
+
+.filterBtnActive {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: var(--bg-main) !important;
+  box-shadow: var(--shadow-gold);
+}
+
+:global(.light-theme) .filterBtnActive {
+  background: var(--accent-teal);
+  border-color: var(--accent-teal);
+  color: #fff !important;
+  box-shadow: var(--shadow-glow);
+}
+
+.rangeSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-glass);
+  outline: none;
+}
+
+.rangeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  cursor: pointer;
+  box-shadow: var(--shadow-gold);
+  transition: all 0.2s;
+}
+
+:global(.light-theme) .rangeSlider::-webkit-slider-thumb {
+  background: var(--accent-teal);
+  box-shadow: var(--shadow-glow);
+}
+
+.sliderLimits {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.filterSectionRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.rowField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterSelect {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--text-main);
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+:global(.light-theme) .filterSelect option {
+  background: #fff;
+  color: #000;
+}
+
+:global(.dark-theme) .filterSelect option {
+  background: #0d0d1a;
+  color: #fff;
+}
+
+/* Results Display Area */
+.resultsArea {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resultsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultsCount {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* No results state */
+.noResults {
+  text-align: center;
+  padding: 60px 40px;
+}
+
+.noResults h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.noResults p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.resetBtnAction {
+  padding: 12px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* Footer style replica */
+.footer {
+  background: var(--bg-sec);
+  border-top: 1px solid var(--border-glass);
+  padding: 80px 0 40px 0;
+  margin-top: 120px;
+}
+
+.footerContainer {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+@media (min-width: 768px) {
+  .footerGrid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+.footerBrand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.footerLogo {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.gold {
+  color: var(--accent-gold);
+}
+
+.footerDesc {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.footerLinks h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-main);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.footerLinks a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footerLinks a:hover {
+  color: var(--accent-gold);
+}
+
+.footerBottom {
+  border-top: 1px solid var(--border-glass);
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}

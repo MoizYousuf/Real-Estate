@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from './Navbar.module.css';
 
 interface NavbarProps {
@@ -24,16 +25,16 @@ export default function Navbar({ theme, toggleTheme, onOpenChat }: NavbarProps) 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} glass-panel`}>
       <div className={styles.container}>
-        <div className={styles.logo}>
+        <Link href="/" className={styles.logo} style={{ textDecoration: 'none' }}>
           <span className={styles.logo3D}>A</span>
           <span className={styles.logoText}>AURA<span className={styles.accent}>ESTATE</span></span>
-        </div>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className={styles.desktopNav}>
-          <a href="#" className={styles.navLink}>Home</a>
-          <a href="#properties" className={styles.navLink}>Properties</a>
-          <a href="#locations" className={styles.navLink}>Locations</a>
+          <Link href="/" className={styles.navLink}>Home</Link>
+          <Link href="/search" className={styles.navLink}>Properties</Link>
+          <Link href="/#locations" className={styles.navLink}>Locations</Link>
           <button className={styles.navLink} onClick={onOpenChat}>AI Assistant</button>
         </nav>
 
@@ -71,9 +72,9 @@ export default function Navbar({ theme, toggleTheme, onOpenChat }: NavbarProps) 
       {/* Mobile Nav Menu */}
       <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.menuVisible : ''} glass-panel`}>
         <nav className={styles.mobileNavLinks}>
-          <a href="#" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Home</a>
-          <a href="#properties" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Properties</a>
-          <a href="#locations" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Locations</a>
+          <Link href="/" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Home</Link>
+          <Link href="/search" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Properties</Link>
+          <Link href="/#locations" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Locations</Link>
           <button className={styles.mobileNavLink} onClick={() => { setMobileMenuOpen(false); onOpenChat(); }}>
             AI Assistant
           </button>
